@@ -8,7 +8,7 @@ var startBtnHandler = function () {
     bgnQuiz.style.display = "none"
     quizArea.style.display = "block"
     timerObject = setInterval(function () {
-        counter.textContent = "time left" + timer
+        counter.textContent = "Time Left: " + timer + "s"
         
         if(timer > 1) {
             timer--;
