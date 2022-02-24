@@ -9,15 +9,19 @@ var result = document.getElementById("right-wrong")
 var score = document.getElementById("score")
 var currentQuestion = 0
 var grade = 0
+var endResults = document.getElementById("end-results")
+var userInitials = document.getElementById("user-initials")
+var saveInitials = document.getElementById("save-initials")
 
 quizArea.style.display = "none"
+endResults.style.display = "none"
 var timer = 120;
 var timerObject;
 var counter = document.getElementById("counter")
 
 var startBtnHandler = function () {
-    bgnQuiz.style.display = "none"
-    quizArea.style.display = "block"
+    counter.textContent = "Time Left: " + timer + "s"
+ 
     timerObject = setInterval(function () {
         counter.textContent = "Time Left: " + timer + "s"
         
@@ -25,9 +29,12 @@ var startBtnHandler = function () {
             timer--;
         }else {
             clearInterval(timerObject)
+            counter.textContent = "Time's up!"
+            displayResults()
         }
     },1000)
-
+    bgnQuiz.style.display = "none"
+    quizArea.style.display = "block"
     displayQuestion();
 };
 
@@ -84,11 +91,16 @@ function optionHandler() {
         currentQuestion ++;
         displayQuestion()
     } else{
-        alert("Quiz is completed.")
+        clearInterval(timerObject)
+        counter.textContent = "You've completed the quiz!"
+        displayResults()
     }
 }
 
-
+function displayResults() {
+    endResults.style.display = "block"
+    quizArea.style.display = "none"
+}
 
 
 
