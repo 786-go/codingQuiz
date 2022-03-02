@@ -13,11 +13,12 @@ var endResults = document.getElementById("end-results")
 var userInitials = document.getElementById("user-initials")
 var saveInitials = document.getElementById("save-initials")
 
-quizArea.style.display = "none"
-endResults.style.display = "none"
 var timer = 50;
 var timerObject;
 var counter = document.getElementById("counter")
+
+quizArea.style.display = "none"
+endResults.style.display = "none"
 
 var startBtnHandler = function () {
     counter.textContent = "Time Left: " + timer + "s"
@@ -25,9 +26,9 @@ var startBtnHandler = function () {
     timerObject = setInterval(function () {
         counter.textContent = "Time Left: " + timer + "s"
         
-        if(timer > 1) {
+        if(timer > 0) {
             timer--;
-        }else {
+        } else {
             clearInterval(timerObject)
             counter.textContent = "Time's up!"
             displayResults()
@@ -81,11 +82,9 @@ function optionHandler() {
     if (userValue == questionlist[currentQuestion].a) {
         result.textContent = "Correct";
         grade += 10;
-        score.textContent = grade;
-    }else{
+    } else{
         result.textContent = "Wrong";
         timer -= 10;
-        score.textContent = grade;
     }
     if(currentQuestion < questionlist.length - 1) {
         currentQuestion ++;
@@ -97,9 +96,12 @@ function optionHandler() {
     }
 }
 
+
+
 function displayResults() {
     endResults.style.display = "block"
     quizArea.style.display = "none"
+    document.querySelector("#final-score").textContent = "Your final score is " + grade + "."
 }
 
 
