@@ -15,7 +15,7 @@ var saveInitials = document.getElementById("save-initials")
 
 quizArea.style.display = "none"
 endResults.style.display = "none"
-var timer = 120;
+var timer = 50;
 var timerObject;
 var counter = document.getElementById("counter")
 
@@ -43,28 +43,28 @@ var startBtnHandler = function () {
 
 var questionlist = [ 
     {
-        q:"What does JS stand for?",
-        c:["Junior-Senior","JavaScript","JanSport","JinSeng"],
+        q:"1) Which of the following is not a JavaScript framework?",
+        c:["Node","Vue","Ruby","React"],
+        a:3
+    },
+    {
+        q:"2) What symbol is used to signify comments in JavaScript?",
+        c:["/* */","//","#","$ $"],
         a:2
     },
     {
-        q:"What does JS stand for?",
-        c:["Junior-Senior","JavaScript","JanSport","JinSeng"],
-        a:2
-    },
-    {
-        q:"What does JS stand for?",
-        c:["Junior-Senior","JavaScript","JanSport","JinSeng"],
+        q:"3) The argument of a function is written inside of which pair of symbols?",
+        c:["' '","( )","{ }","[ ]"],
         a:2
     }, {
-        q:"What does JS stand for?",
-        c:["Junior-Senior","JavaScript","JanSport","JinSeng"],
+        q:"4) The use of [ ] signifies which type of data storage?",
+        c:["object","array","constant","list"],
         a:2
     },
     {
-        q:"What does JS stand for - last?",
-        c:["Junior-Senior","JavaScript","JanSport","JinSeng"],
-        a:2
+        q:"5) What does '&&' mean?",
+        c:["and","or","for all","&& doesn't exist in JavaScript"],
+        a:1
     }
 ]
 
