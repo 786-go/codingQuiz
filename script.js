@@ -104,6 +104,8 @@ function displayResults() {
     document.querySelector("#final-score").textContent = "Your final score is " + grade + "."
 }
 
+
+
 function saveScores() {
     var userScores = JSON.parse(localStorage.getItem("initials")) || []
     var user = document.getElementById("user-initials").value
@@ -112,9 +114,11 @@ function saveScores() {
     endResults.style.display = "none"
     var allScores = ""
     for (let i = 0; i < userScores.length; i++) {
-        allScores += `<h6> ${userScores[i].user} / ${userScores[i].score} </h6>`
+        allScores += `<h6> ${userScores[i].user} scored ${userScores[i].score}/50 </h6>`
     }
+    
     document.getElementById("all-scores").innerHTML = allScores
+    counter.textContent = "ALL SCORES"
 }
 
 
