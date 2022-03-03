@@ -6,7 +6,6 @@ var button2 = document.getElementById("opt2")
 var button3 = document.getElementById("opt3")
 var button4 = document.getElementById("opt4")
 var result = document.getElementById("right-wrong")
-var score = document.getElementById("score")
 var currentQuestion = 0
 var grade = 0
 var endResults = document.getElementById("end-results")
@@ -86,6 +85,7 @@ function optionHandler() {
         result.textContent = "Wrong";
         timer -= 10;
     }
+
     if(currentQuestion < questionlist.length - 1) {
         currentQuestion ++;
         displayQuestion()
@@ -104,7 +104,18 @@ function displayResults() {
     document.querySelector("#final-score").textContent = "Your final score is " + grade + "."
 }
 
-
+function saveScores() {
+    var userScores = JSON.parse(localStorage.getItem("initials")) || []
+    var user = document.getElementById("user-initials").value
+    userScores.push({user:user,score:grade})
+    localStorage.setItem("initials", JSON.stringify(userScores))
+    endResults.style.display = "none"
+    var allScores = ""
+    for (let i = 0; i < userScores.length; i++) {
+        allScores += `<h6> ${userScores[i].user} / ${userScores[i].score} </h6>`
+    }
+    document.getElementById("all-scores").innerHTML = allScores
+}
 
 
 
@@ -114,3 +125,4 @@ button1.addEventListener("click", optionHandler)
 button2.addEventListener("click", optionHandler)
 button3.addEventListener("click", optionHandler)
 button4.addEventListener("click", optionHandler)
+saveInitials.addEventListener("click", saveScores)
